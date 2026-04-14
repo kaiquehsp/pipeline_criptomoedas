@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: mart_top_10_coins
+    description: "Ranking das 10 moedas com maior valor de mercado na captura mais recente."
+    columns:
+      - name: coin_id
+        description: "ID da moeda no topo do ranking."
+      - name: coin_name
+        description: "Nome da moeda."
+      - name: symbol
+        description: "Simbolo da moeda."
+      - name: price_usd
+        description: "Preco atual."
+      - name: market_cap
+        description: "Capitalizacao de mercado usada para o ranking."
+      - name: ingestion_timestamp
+        description: "Momento da captura."
+
+  - name: mart_volatilidade
+    description: "Analise de variacao percentual de precos entre capturas consecutivas."
+    columns:
+      - name: coin_id
+        description: "ID da moeda analisada."
+      - name: coin_name
+        description: "Nome da moeda."
+      - name: price_usd
+        description: "Preco atual."
+      - name: price_usd_anterior
+        description: "Preco da captura anterior recuperado via LAG."
+      - name: ingestion_timestamp
+        description: "Momento da captura atual."
+      - name: variacao_percentual
+        description: "Diferenca percentual entre precos. Calculo: ((Atual/Anterior)-1)*100."
+        tests:
+          - not_null
+      - name: tendencia
+        description: "Classificacao do movimento de preco: Alta, Baixa ou Estavel."
+        tests:
+          - accepted_values:
+              values: ['Alta', 'Baixa', 'Estavel']

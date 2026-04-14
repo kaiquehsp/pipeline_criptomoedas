@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: int_coins_cleaned
+    description: >
+      Tabela central de limpeza. Esta camada aplica a lógica de deduplicação,
+      para garantir que cada moeda tenha apenas um registro com o estado mais recente.
+
+    columns:
+      - name: coin_id
+        description: "ID único da moeda."
+        tests:
+          - unique   
+          - not_null
+
+      - name: coin_name
+        description: "Nome da moeda."
+        tests:
+          - not_null
+
+      - name: symbol
+        description: "Sigla da moeda em letras maiusculas"
+        tests:
+          - not_null
+
+      - name: price_usd
+        description: "Preco atual da moeda"
+        tests:
+          - not_null
+
+      - name: volume_24h
+        description: "Volume total negociado nas últimas 24 horas."
+
+      - name: market_cap
+        description: "Valor de mercado total da moeda em USD."
+
+      - name: last_updated
+        description: "Data e hora da última atualização reportada pela API externa."
+
+      - name: ingestion_timestamp
+        description: "Data e hora em que o registro foi capturado pelo nosso pipeline."
+        tests:
+          - not_null

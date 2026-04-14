@@ -1,0 +1,7 @@
+dbt_code:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: /usr/local/airflow/include/local_database.duckdb
+      threads: 1

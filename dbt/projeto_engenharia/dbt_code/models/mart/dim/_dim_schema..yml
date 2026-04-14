@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: dim_coins
+    description: "Tabela de dimensao com os dados cadastrais das moedas. Garante que cada moeda apareca apenas uma vez."
+    columns:
+      - name: coin_id
+        description: "Identificador unico da moeda. Chave primaria da dimensao."
+        tests:
+          - unique
+          - not_null
+      - name: coin_name
+        description: "Nome oficial da moeda."
+        tests:
+          - not_null
+      - name: symbol
+        description: "Sigla da moeda em letras maiusculas."
+        tests:
+          - not_null

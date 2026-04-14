@@ -1,0 +1,43 @@
+name: 'dbt_code'
+version: '1.0.0'
+profile: 'dbt_code'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+
+models:
+  dbt_code:
+    
+    staging:
+      +schema: staging
+      +materialized: table
+    
+    
+    intermediate:
+      +schema: intermediate
+      +materialized: view  
+      
+   
+    mart:
+      +schema: mart
+
+      
+      dim:
+        +materialized: table
+
+      
+      fact:
+        +materialized: table
+      
+      
+      metrics:
+        +materialized: table

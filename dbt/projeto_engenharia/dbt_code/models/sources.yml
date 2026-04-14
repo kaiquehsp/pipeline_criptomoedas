@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: bronze_layer
+    schema: main
+    description: "Camada de dados brutos (Raw) em formato Parquet"
+    tables:
+      - name: crypto_raw
+        description: "Extração diária de listagem de criptomoedas"
+        meta:
+          external_location: "read_parquet('/usr/local/airflow/include/01-bronze-raw/*.parquet')"

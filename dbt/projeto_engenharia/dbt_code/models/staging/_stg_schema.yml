@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: stg_df_coins
+    description: "Limpeza inicial e padronização de tipos do CSV bruto (seed). Camada de contato com a fonte."
+    columns:
+
+      - name: coin_id
+        description: "Identificador único da moeda na API."
+        tests:
+          - not_null
+
+      - name: name
+        description: "Nome completo da criptomoeda em minúsculas."
+
+      - name: symbol
+        description: "Sigla da moeda em letras maiusculas"
+
+      - name: price_usd
+        description: "Preço atual em dolar americano."
+        tests:
+          - not_null
+
+      - name: volume_24h
+        description: "Volume de negociacao nas últimas 24 horas."
+
+      - name: market_cap
+        description: "Capitalização(somatorio do preco) de mercado total."
+
+      - name: last_updated
+        description: "Timestamp do ultimo dado atualizado na fonte (API)."
+
+      - name: ingestion_timestamp
+        description: "Timestamp interno de quando o registro entrou no Data Warehouse."

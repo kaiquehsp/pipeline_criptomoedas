@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: fct_coins
+    description: "Tabela de fatos contendo o historico de precos e metricas capturadas pela ingestao."
+    columns:
+      - name: coin_id
+        description: "Chave estrangeira que conecta a dim_coins."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_coins')
+              field: coin_id
+      - name: price_usd
+        description: "Preco atual da moeda."
+        tests:
+          - not_null
+      - name: volume_24h
+        description: "Volume de negociacao nas ultimas 24 horas."
+      - name: market_cap
+        description: "Valor de mercado total."
+      - name: last_updated
+        description: "Data da ultima atualizacao na fonte externa."
+      - name: ingestion_timestamp
+        description: "Timestamp de quando o registro foi processado."
+        tests:
+          - not_null
