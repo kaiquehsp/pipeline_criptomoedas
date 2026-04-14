@@ -84,6 +84,7 @@ env
 COINMARKETCAP_API_KEY=sua_chave_aqui
 BRONZE_DATA_DIR=/usr/local/airflow/include/01-bronze-raw
 ```
+     Para gerar sua api_key, acesse o site https://coinmarketcap.com/api/
 
 ## 5. Inicialização do Projeto
 
@@ -92,15 +93,13 @@ BRONZE_DATA_DIR=/usr/local/airflow/include/01-bronze-raw
 astro dev init
 
 # Constrói a imagem e sobe a infraestrutura do Airflow
-astro dev start
+astro dev start      #aperte 'y' para prosseguir com a inicialização
 
 Nota: O repositório já contém um arquivo .airflowignore configurado para ocultar as DAGs de exemplo geradas automaticamente pelo comando init.
 ```
-     Para gerar sua api_key, acesse o site https://coinmarketcap.com/api/
-
 
 **Acesse a UI do Airflow em:**
-👉 `http://localhost:8080`
+👉 `http://pipeline-criptomoedas.localhost:6563`
 
 **Login:** `admin / admin`
 
