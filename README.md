@@ -79,25 +79,33 @@ sudo chmod -R 777 include/
 ## 4. Configuração de Variáveis de Ambiente
 
 Crie um arquivo `.env` na raiz do projeto:
-```env
+```
+env
 COINMARKETCAP_API_KEY=sua_chave_aqui
 BRONZE_DATA_DIR=/usr/local/airflow/include/01-bronze-raw
 ```
 
-## 5. Inicialização do projeto
-```
-bash
-astro dev start
-```
+## 5. Inicialização do Projeto
 
+```bash
+# Inicializa as configurações locais do Astro CLI
+astro dev init
+
+# Constrói a imagem e sobe a infraestrutura do Airflow
+astro dev start
+
+Nota: O repositório já contém um arquivo .airflowignore configurado para ocultar as DAGs de exemplo geradas automaticamente pelo comando init.
+```
      Para gerar sua api_key, acesse o site https://coinmarketcap.com/api/
 
-Acesse a UI do Airflow em:
-👉 http://localhost:8080
 
-Login: admin / admin
+**Acesse a UI do Airflow em:**
+👉 `http://localhost:8080`
 
-Dispare a DAG: crypto_medallion_pipeline
+**Login:** `admin / admin`
+
+**Dispare a DAG:** `crypto_medallion_pipeline`
+
 
 
 ## 6. Transformação com dbt (Camadas Medallion)
